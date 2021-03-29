@@ -1,11 +1,12 @@
 # will control questions and provide the right player with the right questions
 class Questions
   include Players
+  attr_accessor :answer, :question  
   
-  def initialize(question)
-      x = (rand(10))
-      y = (rand(10))
-      z = x + y
-      puts(("#{current_player}: What does ") + String(x) + " plus " + String(y) + ("equal?"))
+  def initialize()
+      num1 = (rand(10))
+      num2 = (rand(10))
+      answer = num1 + num2
+      question = "#{current_player}: What does #{num1} plus #{num2} equal?"
     end
   end

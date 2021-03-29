@@ -1,5 +1,8 @@
-# will control players and keep track of current player
+# will control players and keep track of current player and determine if play is alive or not
 class Players
+
+  attr_accessor :name, :lives, :count
+
   def initialize(name)
     @name = name
     @lives = 3
