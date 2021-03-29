@@ -1,26 +1,38 @@
+require './players'
+require './questions'
 # will start game, control points and determine who is the winner
 class Game
-  include Players
-  include Questions
+  
+  player1 = Players.new
+  player2 = Players.new
 
-  puts "----- NEW TURN -----"
-#with the game need to create player1 and player2 instances
-while (player1.is_alive && player2.is_alive) do
-  answer = Integer(gets())
-  if answer == z
-    puts "#{player}: YES! You are correct."
-    puts "P1: #{lives}/3 vs P2: #{lives}/3"
-  else 
-    score = score - 1
-    puts "#{player}: Seriously? No!"
-    puts "P1: #{score1}/3 vs P2: #{score2}/3"
+  while (player1.is_alive && player2.is_alive) do
+    player = current_player
+    puts "----- NEW TURN -----"
+    question = Questions.new
+    puts "#{player}: #{question.question_show}"
+    print '> '
+    answer = gets.chomp
+    if answer == right_answer
+      puts "#{player}: YES! You are correct."
+      puts "P1: #{lives}/3 vs P2: #{lives}/3"
+    else 
+      player.lives - 1
+      puts "#{player}: Seriously? No!"
+      puts "P1: #{lives}/3 vs P2: #{lives}/3"
+    end
+    count = count + 1
   end
+
 #logic for checking lives of players and output thank you message and if no one wins then have next turn method that will create question and check answer. Need to add check answer
 def check_winner 
-  puts "----- GAME OVER -----"
-  if score1 == 0
-    puts "Player 2 wins with a score of #{score2}/3"
+  if !(player.is_alive)
+    puts "Player 2 wins with a score of #{lives}/3"
+    puts "----- GAME OVER -----"
+    puts "Good bye!"
   else
-    puts "Player 1 wins with a score of #{score1}/3"
+    puts "Player 1 wins with a score of #{lives}/3"
+    puts "----- GAME OVER -----"
+    puts "Good bye!"
   end
 end

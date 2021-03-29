@@ -4,3 +4,5 @@ require 'pp'
 require './questions'
 require './game'
 require './players'
+
+pp game

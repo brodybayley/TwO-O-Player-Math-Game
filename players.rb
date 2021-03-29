@@ -3,8 +3,7 @@ class Players
 
   attr_accessor :name, :lives, :count
 
-  def initialize(name)
-    @name = name
+  def initialize()
     @lives = 3
     @count = 0
   end
