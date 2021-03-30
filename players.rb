@@ -1,19 +1,19 @@
 # will control players and keep track of current player and determine if play is alive or not
-class Players
+class Player
 
-  attr_accessor :name, :lives, :count
+  attr_reader :id, :score
 
-  def initialize()
-    @lives = 3
-    @count = 0
+  def initialize(id)
+    @id = id
+    @score = 3
   end
 
-  def current_player
-    @count % 2 == 0 ? player1 : player2
+  def lose_turn
+    @score -= 1
   end
 
   def is_alive?
-    @lives > 0
+    @score > 0
   end
 end
 
