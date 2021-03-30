@@ -14,16 +14,17 @@ class Game
 
   def turn 
     puts "----- NEW TURN -----"
-    puts "Player #{@current_player.id}: #{@question_show}"
+    puts "Player #{@current_player.id}: #{@question.question_show}"
     print "> "
     guess = gets.chomp.to_i
 
-    if input == @question.answer
+    if guess == @question.answer
       puts "Player #{@current_player.id}: YES! You are correct."
     else 
       puts "Player #{@current_player.id}: Seriously? No!"
       @current_player.lose_turn
     end
+    @question = Question.new
   end
 
   def switch_players
@@ -33,12 +34,12 @@ class Game
 
   def score 
     puts "----- Score -----"
-    puts "P1: #{player1.score}/3 vs P2: #{player2.score}/3"
+    puts "P1: #{@player1.score}/3 vs P2: #{@player2.score}/3"
   end
 
 
   def start 
-    while player1.is_alive? && player2.is_alive? do
+    while @player1.is_alive? && @player2.is_alive? do
       turn()
       score()
       switch_players()
